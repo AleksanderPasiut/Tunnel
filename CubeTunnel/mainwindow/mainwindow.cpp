@@ -18,7 +18,7 @@ void MAINWINDOW::InitWindowClass(HINSTANCE hInstance, WNDPROC wndproc)
 void MAINWINDOW::InitHwnd()
 {
 	hwnd = CreateWindowEx(
-		WS_EX_TOPMOST,
+		0,
 		wc.lpszClassName,
 		L"3D2048",
 		WS_POPUP,

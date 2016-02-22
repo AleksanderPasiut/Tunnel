@@ -33,7 +33,7 @@
     <ClCompile Include="core\tunnel\tunnel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="core\tunnel\tunnel_graphics.cpp">
+    <ClCompile Include="core\tunnel\cube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -54,6 +54,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="core\tunnel\tunnel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="core\tunnel\cube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -44,7 +44,6 @@ protected:
 	STR_PROJECTION strProjection;
 
 	D3DCOLOR color_back;
-	D3DMATERIAL9 material_bounding_cube;
 
 	inline void CreateDirect3DDevice();
 	inline void InitColorsNMaterials() noexcept;
@@ -64,6 +63,7 @@ public:
 	void UpdateMatrixProjection() noexcept;
 
 	IDirect3DDevice9* RetDevice() noexcept { return d3ddev; }
+	D3DXMATRIX* RetWorldMatrix() noexcept { return &strWorld.matWorld; }
 	float& RotationY() noexcept { return strWorld.rotationY; }
 	float& RotationZ() noexcept { return strWorld.rotationZ; }
 	D3DXVECTOR3& CameraPos() noexcept { return strView.camera_pos; }
@@ -72,6 +72,4 @@ public:
 	float& ProjectionAngle() noexcept { return strProjection.angle; }
 	float& PlaneNear() noexcept { return strProjection.plane_near; }
 	float& PlaneFar() noexcept { return strProjection.plane_far; }
-
-	const D3DMATERIAL9* MaterialBoundingCube() noexcept { return &material_bounding_cube; }
 };

@@ -27,6 +27,7 @@ public:
 	CORE& operator= (const CORE&) = delete;
 	~CORE() noexcept;
 
+	void Animate() noexcept;
 	void RenderScene() noexcept;
 	void UpdateWindowSize() noexcept;
 	

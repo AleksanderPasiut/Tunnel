@@ -40,10 +40,6 @@ void GRAPHICS::CreateDirect3DDevice()
 void GRAPHICS::InitColorsNMaterials() noexcept
 {
 	color_back = D3DCOLOR_XRGB(0, 0, 0);
-
-	ZeroMemory(&material_bounding_cube, sizeof(D3DMATERIAL9));
-	material_bounding_cube.Ambient = D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.0f);
-	material_bounding_cube.Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 }
 void GRAPHICS::InitLights() noexcept
 {
@@ -132,9 +128,10 @@ void GRAPHICS::BeginScene() noexcept
 
 	d3ddev->BeginScene();
 
-	d3ddev->SetTransform(D3DTS_WORLD, &strWorld.matWorld);
 	d3ddev->SetTransform(D3DTS_VIEW, &strView.matView);
 	d3ddev->SetTransform(D3DTS_PROJECTION, &strProjection.matProjection);
+
+	d3ddev->SetFVF(CUSTOMFVF_TYPE);
 }
 
 void GRAPHICS::EndScene() noexcept

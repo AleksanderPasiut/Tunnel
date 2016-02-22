@@ -1,17 +1,16 @@
 #pragma once
 
+#include <vector>
+
 #include "..\\graphics\\graphics.h"
+#include "cube.h"
 
 class TUNNEL
 {
 protected:
 	GRAPHICS& graphics;
 
-	IDirect3DVertexBuffer9* bounding_cube;
-
-	void CreateBoundingCube() noexcept;
-	void DrawBoundingCube() noexcept;
-
+	std::vector<CUBE*> cube_array;
 
 public:
 	TUNNEL(GRAPHICS&);
@@ -19,5 +18,6 @@ public:
 	TUNNEL& operator= (const TUNNEL&) = delete;
 	~TUNNEL() noexcept;
 
+	void Animate() noexcept;
 	void Draw() noexcept;
 };

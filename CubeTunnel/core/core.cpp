@@ -25,6 +25,11 @@ CORE::~CORE() noexcept
 	delete graphics;
 }
 
+void CORE::Animate() noexcept
+{
+	tunnel->Animate();
+}
+
 void CORE::RenderScene() noexcept
 {
 	graphics->BeginScene();
