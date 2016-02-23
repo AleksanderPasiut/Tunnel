@@ -105,7 +105,7 @@ GRAPHICS::GRAPHICS(HWND in_hwnd) :
 			strView.up_direction = D3DXVECTOR3(0.0f, 0.0f, 1.0f);
 			strProjection.angle = 45;
 			strProjection.plane_near = 1.0f;
-			strProjection.plane_far = 100.0f;
+			strProjection.plane_far = 200.0f;
 			UpdateMatrixWorld();
 			UpdateMatrixView();
 			UpdateMatrixProjection();

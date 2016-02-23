@@ -76,17 +76,14 @@ void CUBE::InitVertexBuffer()
 
 	points->Unlock();
 }
-void CUBE::InitMaterial() noexcept
+void CUBE::InitMaterial(const D3DCOLORVALUE& color) noexcept
 {
 	ZeroMemory(&material, sizeof(D3DMATERIAL9));
-	material.Ambient = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-	material.Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	material.Ambient = color;
+	material.Diffuse = color;
 }
 void CUBE::InitPlacement() noexcept
 {
-	placement.scale = D3DXVECTOR3(4.0f, 1.0f, 1.0f);
-	placement.pos = D3DXVECTOR3(6.0f, 0.0f, 0.0f);
-
 	D3DXMatrixMultiply(
 		&placement.mat,
 		D3DXMatrixScaling(
@@ -101,22 +98,24 @@ void CUBE::InitPlacement() noexcept
 			placement.pos.z));
 
 }
-void CUBE::InitAnimation() noexcept
-{
-	animation.speed = 0.1f;
-}
 
-CUBE::CUBE(GRAPHICS& in_graphics) : 
+CUBE::CUBE(GRAPHICS& in_graphics, 
+	const D3DXVECTOR3& init_pos,
+	const D3DXVECTOR3& init_scale,
+	const D3DCOLORVALUE& color,
+	float in_speed,
+	float in_pos_limit) : 
 	graphics(in_graphics)
 {
-	try
-	{
-		InitVertexBuffer();
-		InitMaterial();
-		InitPlacement();
-		InitAnimation();
-	}
-	catch(...) { throw; }
+	InitVertexBuffer();
+	InitMaterial(color);
+
+	placement.scale = init_scale;
+	placement.pos = init_pos;
+	placement.pos_limit = in_pos_limit;
+	InitPlacement();
+
+	animation.speed = in_speed;
 }
 
 CUBE::~CUBE() noexcept
@@ -124,9 +123,13 @@ CUBE::~CUBE() noexcept
 	points->Release();
 }
 
-void CUBE::animate() noexcept
+bool CUBE::animate() noexcept
 {
-	placement.pos.x -= animation.speed;
+	placement.pos.x += animation.speed;
+
+	if (placement.pos.x > placement.pos_limit)
+		return false;
+
 	D3DXMatrixMultiply(
 		&placement.mat,
 		&placement.mat_scale,
@@ -135,6 +138,8 @@ void CUBE::animate() noexcept
 			placement.pos.x,
 			placement.pos.y,
 			placement.pos.z));
+
+	return true;
 }
 
 void CUBE::draw() noexcept

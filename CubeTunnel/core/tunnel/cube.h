@@ -13,6 +13,7 @@ protected:
 	{
 		D3DXVECTOR3 scale;
 		D3DXVECTOR3 pos;
+		float pos_limit;
 
 		D3DXMATRIX mat_scale;
 		D3DXMATRIX mat_translation;
@@ -27,16 +28,15 @@ protected:
 	ANIMATION animation;
 
 	inline void InitVertexBuffer();
-	inline void InitMaterial() noexcept;
+	inline void InitMaterial(const D3DCOLORVALUE&) noexcept;
 	inline void InitPlacement() noexcept;
-	inline void InitAnimation() noexcept;
 
 public:
-	CUBE(GRAPHICS&);
+	CUBE(GRAPHICS&, const D3DXVECTOR3& init_pos, const D3DXVECTOR3& init_scale, const D3DCOLORVALUE& color, float speed, float pos_limit);
 	CUBE(const CUBE&) = delete;
 	CUBE& operator= (const CUBE&) = delete;
 	~CUBE() noexcept;
 
-	void animate() noexcept;
+	bool animate() noexcept;
 	void draw() noexcept;
 };

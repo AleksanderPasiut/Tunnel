@@ -1,1 +1,10 @@
-﻿  CubeTunnel.vcxproj -> C:\Users\Avert Second\Documents\Visual Studio 2015\Projects\APMR\CubeTunnel\x64\Release\CubeTunnel.exe
+﻿  tunnel.cpp
+  core.cpp
+  event_proc.cpp
+  main.cpp
+  Generating code
+  5 of 231 functions ( 2.2%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  CubeTunnel.vcxproj -> C:\Users\Avert Second\Documents\Visual Studio 2015\Projects\APMR\CubeTunnel\x64\Release\CubeTunnel.exe
