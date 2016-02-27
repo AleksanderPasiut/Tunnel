@@ -5,7 +5,7 @@
 CORE::CORE(HWND hwnd)
 {
 	rotating.rotationY_limit = 1.57f;
-	rotating.speed = 0.003f;
+	rotating.speed = 0.0025f;
 
 	try
 	{

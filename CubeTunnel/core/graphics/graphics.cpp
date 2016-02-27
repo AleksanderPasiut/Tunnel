@@ -32,10 +32,6 @@ void GRAPHICS::CreateDirect3DDevice()
 		throw 0;
 
 	d3ddev->SetRenderState(D3DRS_ZENABLE, D3DZB_TRUE);
-	d3ddev->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
-	d3ddev->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
-	d3ddev->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
-	d3ddev->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 }
 void GRAPHICS::InitColorsNMaterials() noexcept
 {
@@ -44,13 +40,21 @@ void GRAPHICS::InitColorsNMaterials() noexcept
 void GRAPHICS::InitLights() noexcept
 {
 	d3ddev->SetRenderState(D3DRS_LIGHTING, true);
-	d3ddev->SetRenderState(D3DRS_AMBIENT, D3DCOLOR_XRGB(50, 50, 50));
+	//d3ddev->SetRenderState(D3DRS_AMBIENT, D3DCOLOR_XRGB(20, 20, 20));
 
 	D3DLIGHT9 light;
 	ZeroMemory(&light, sizeof(D3DLIGHT9));
-	light.Type = D3DLIGHT_DIRECTIONAL;
+	light.Type = D3DLIGHT_SPOT;
 	light.Diffuse = D3DXCOLOR(0.5f, 0.5f, 0.5f, 1.0f);
-	light.Direction = D3DXVECTOR3(-1.0f,  0.0f,  0.0f);
+	light.Position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	light.Direction = D3DXVECTOR3(-1.0f, 0.0f, 0.0f);
+	light.Range = 250.0f;
+	light.Attenuation0 = 0.0f;
+	light.Attenuation1 = 0.01f;
+	light.Attenuation2 = 0.0f;
+	light.Phi = D3DXToRadian(45.0f);
+	light.Theta = D3DXToRadian(25.0f);
+	light.Falloff = 0.8f;
 
 	d3ddev->SetLight(0, &light);
 	d3ddev->LightEnable(0, true);

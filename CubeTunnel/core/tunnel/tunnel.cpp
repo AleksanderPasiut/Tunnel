@@ -23,7 +23,11 @@ void TUNNEL::CreateNewCube()
 		creation_properties.scale.span.y*frand+creation_properties.scale.min.y,
 		creation_properties.scale.span.z*frand+creation_properties.scale.min.z);
 
-	D3DXCOLOR init_color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);//creation_properties.color.span*frand+creation_properties.color.min;
+	D3DXCOLOR init_color(
+			creation_properties.color.span.r*frand+creation_properties.color.min.r,
+			creation_properties.color.span.g*frand+creation_properties.color.min.g,
+			creation_properties.color.span.b*frand+creation_properties.color.min.b, 1.0f);
+		//D3DXCOLOR(0.909f, 0.0f, 0.592f, 1.0f);//
 
 	CUBE* new_cube = new CUBE(
 		graphics,
@@ -44,12 +48,12 @@ TUNNEL::TUNNEL(GRAPHICS& in_graphics) :
 {
 	creation_properties = 
 	{
-		0.5f,
+		0.6f,
 		250.0f,
-		{ 3.0f, 3.0f },
-		{ D3DXVECTOR3(4.5f, 0.8f, 0.8f), D3DXVECTOR3(1.5f, 0.4f, 0.4f) },
-		{ D3DXCOLOR(0.3f, 0.3f, 0.7f, 1.0f), D3DXCOLOR(0.1f, 0.1f, 0.1f, 1.0f) },
-		{ 0.6f, 0.0f },
+		{ 4.0f, 8.0f },
+		{ D3DXVECTOR3(6.5f, 1.8f, 1.8f), D3DXVECTOR3(2.5f, 0.7f, 0.7f) },
+		{ D3DXCOLOR(0.3f, 0.3f, 0.3f, 1.0f), D3DXCOLOR(0.7f, 0.7f, 0.7f, 1.0f) },
+		{ 0.7f, 0.0f },
 	};	
 }
 

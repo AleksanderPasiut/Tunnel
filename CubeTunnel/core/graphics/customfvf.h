@@ -9,10 +9,4 @@ struct CUSTOMFVF
 	float y;
 	float z;
 	D3DVECTOR normal;
-
-	CUSTOMFVF(float in_x, float in_y, float in_z, D3DVECTOR in_normal) : 
-		x(in_x),
-		y(in_y),
-		z(in_z),
-		normal(in_normal) {}
 };
