@@ -19,11 +19,11 @@ void TUNNEL::CreateNewCube()
 		radius*sin(angle));
 
 	D3DXVECTOR3 init_scale(
-		creation_properties.scale.span*frand+creation_properties.scale.min,
-		creation_properties.scale.span*frand+creation_properties.scale.min,
-		creation_properties.scale.span*frand+creation_properties.scale.min);
+		creation_properties.scale.span.x*frand+creation_properties.scale.min.x,
+		creation_properties.scale.span.y*frand+creation_properties.scale.min.y,
+		creation_properties.scale.span.z*frand+creation_properties.scale.min.z);
 
-	D3DXCOLOR init_color = creation_properties.color.min*frand+creation_properties.color.span;
+	D3DXCOLOR init_color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);//creation_properties.color.span*frand+creation_properties.color.min;
 
 	CUBE* new_cube = new CUBE(
 		graphics,
@@ -46,10 +46,10 @@ TUNNEL::TUNNEL(GRAPHICS& in_graphics) :
 	{
 		0.5f,
 		250.0f,
-		{ 0.5f, 6.0f },
-		{ 0.1f, 0.4f },
+		{ 3.0f, 3.0f },
+		{ D3DXVECTOR3(4.5f, 0.8f, 0.8f), D3DXVECTOR3(1.5f, 0.4f, 0.4f) },
 		{ D3DXCOLOR(0.3f, 0.3f, 0.7f, 1.0f), D3DXCOLOR(0.1f, 0.1f, 0.1f, 1.0f) },
-		{ 0.8f, 0.0f },
+		{ 0.6f, 0.0f },
 	};	
 }
 

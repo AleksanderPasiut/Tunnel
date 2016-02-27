@@ -13,6 +13,7 @@ protected:
 
 	struct ROTATING
 	{
+		float speed;
 		POINT click;
 		float old_rotationY;
 		float old_rotationZ;

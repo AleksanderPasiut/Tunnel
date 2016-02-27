@@ -5,6 +5,7 @@
 CORE::CORE(HWND hwnd)
 {
 	rotating.rotationY_limit = 1.57f;
+	rotating.speed = 0.003f;
 
 	try
 	{
@@ -57,12 +58,12 @@ void CORE::MouseMove(WPARAM wParam, LPARAM lParam) noexcept
 	{
 		case MK_LBUTTON:
 		{
-			graphics->RotationY() = rotating.old_rotationY-(GET_Y_LPARAM(lParam)-rotating.click.y)*0.004f;
+			graphics->RotationY() = rotating.old_rotationY-(GET_Y_LPARAM(lParam)-rotating.click.y)*rotating.speed;
 			if (graphics->RotationY() > rotating.rotationY_limit)
 				graphics->RotationY() = rotating.rotationY_limit;
 			if (graphics->RotationY() < -rotating.rotationY_limit)
 				graphics->RotationY() = -rotating.rotationY_limit;
-			graphics->RotationZ() = rotating.old_rotationZ+(GET_X_LPARAM(lParam)-rotating.click.x)*0.004f;
+			graphics->RotationZ() = rotating.old_rotationZ+(GET_X_LPARAM(lParam)-rotating.click.x)*rotating.speed;
 			graphics->UpdateMatrixWorld();
 			break;
 		}

@@ -31,7 +31,7 @@ void GRAPHICS::CreateDirect3DDevice()
 		&d3ddev)))
 		throw 0;
 
-	d3ddev->SetRenderState(D3DRS_ZENABLE, true);
+	d3ddev->SetRenderState(D3DRS_ZENABLE, D3DZB_TRUE);
 	d3ddev->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
 	d3ddev->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
 	d3ddev->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
@@ -100,12 +100,12 @@ GRAPHICS::GRAPHICS(HWND in_hwnd) :
 			
 			strWorld.rotationY = 0.0f;
 			strWorld.rotationZ = 0.0f;
-			strView.camera_pos = D3DXVECTOR3(5.0f, 0.0f, 0.0f);
+			strView.camera_pos = D3DXVECTOR3(0.5f, 0.0f, 0.0f);
 			strView.look_at_point = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 			strView.up_direction = D3DXVECTOR3(0.0f, 0.0f, 1.0f);
 			strProjection.angle = 45;
-			strProjection.plane_near = 1.0f;
-			strProjection.plane_far = 200.0f;
+			strProjection.plane_near = 0.6f;
+			strProjection.plane_far = 250.0f;
 			UpdateMatrixWorld();
 			UpdateMatrixView();
 			UpdateMatrixProjection();

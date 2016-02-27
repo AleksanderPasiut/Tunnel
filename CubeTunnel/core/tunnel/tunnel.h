@@ -27,7 +27,7 @@ protected:
 		float creation_chance;
 		float boundary;
 		FRAND<float> radius;
-		FRAND<float> scale;
+		FRAND<D3DXVECTOR3> scale;
 		FRAND<D3DXCOLOR> color;
 		FRAND<float> speed;
 	};
